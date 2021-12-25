@@ -1,0 +1,90 @@
+﻿<Window x:Class="SteganographyApp.View.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SteganographyApp.View"
+        xmlns:vm="clr-namespace:SteganographyApp.ViewModel"
+        xmlns:conventer="clr-namespace:SteganographyApp.Conventers"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:viewmodel="clr-namespace:SteganographyApp.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowVM}"
+        mc:Ignorable="d"
+        Height="680" 
+        Width="1100" 
+        MinHeight="350"
+        MinWidth="420"
+        Foreground="White" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None">
+    <Window.Resources>
+        <conventer:EqualValueToParameterConverter x:Key="EqualValueToParameterConverter" />
+    </Window.Resources>
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="TopPanel" Grid.Row="0" Grid.ColumnSpan="3" Background="LightGray" MouseLeftButtonDown="DragWindow">
+            <Label Content="Steganografia" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="Btn_Min" Height="20" Width="20" Margin="10 0 10 0" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1725B4" Click="BtnMin_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Width="auto" Height="auto"/>
+                </Button>
+                <Button x:Name="Btn_Max" Height="20" Width="20" Margin="10 0 10 0" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1725B4" Click="BtnMax_Click">
+                    <materialDesign:PackIcon Kind="WindowMaximize" Width="auto" Height="auto"/>
+                </Button>
+                <Button x:Name="Btn_Close" Height="20" Width="20" Margin="10 0 10 0" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1725B4" Click="BtnClose_Click">
+                    <materialDesign:PackIcon Kind="Close" Width="auto" Height="auto"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel.Resources>
+                    <Style BasedOn="{StaticResource NavButton}" TargetType="RadioButton" />
+                </StackPanel.Resources>
+
+                <RadioButton HorizontalAlignment="Center" 
+                             VerticalAlignment="Top"
+                             ToolTip="Ukryj plik binarny w pliku BMP"
+                             Margin="10 10"
+                             BorderBrush="{x:Null}"
+                             Height="60"
+                             Width="60"
+                             Content="{materialDesign:PackIcon Kind=LockOutline, Size=30}"
+                             HorizontalContentAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             Command="{Binding UpdateViewCmd}" 
+                             CommandParameter="Encryption"
+                             IsChecked="{Binding SelectedViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type vm:EncryptionVM}}"/>
+
+                <RadioButton HorizontalAlignment="Center" 
+                             VerticalAlignment="Top"
+                             ToolTip="Odzyskaj plik binarny z pliku BMP"
+                             Margin="10 10"
+                             BorderBrush="{x:Null}"
+                             Height="60"
+                             Width="60"
+                             Content="{materialDesign:PackIcon Kind=LockOpenOutline, Size=30}"
+                             HorizontalContentAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             Command="{Binding UpdateViewCmd}" 
+                             CommandParameter="Decryption"
+                             IsChecked="{Binding SelectedViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type vm:DecryptionVM}}" />
+            </StackPanel>
+        </Grid>
+        <ContentControl Content="{Binding SelectedViewModel}" Grid.Column="1" Grid.Row="1"/>
+    </Grid>
+</Window>

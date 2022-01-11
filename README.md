@@ -11,7 +11,7 @@ After the hiding process, you can decrypt the encrypted file.
 
 
 ## Functions
-Done:
+
 + Hiding a file on bitmap
 + Information about data storage
 + Bit selection for each subpixel(RGB) 
@@ -21,5 +21,14 @@ Done:
 
 ## User Interface
 
+![Encryption](https://github.com/RadoslawJasinski/ImageSteganography-MVVM/blob/main/EncryptionAnimation.gif)
+<p align="center">Encryption</p>&nbsp;
+&nbsp;
 
 
+![Decryption](https://github.com/RadoslawJasinski/ImageSteganography-MVVM/blob/main/DecryptionAnimation.gif)
+<p align="center">Decryption</p>&nbsp;
+
+
+<p align="center"><img src="https://github.com/RadoslawJasinski/ImageSteganography-MVVM/blob/main/Comparison.png"></p>
+<p align="center">Comparison of selected bit, data is vertically hidden</p>&nbsp;

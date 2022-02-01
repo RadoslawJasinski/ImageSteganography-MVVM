@@ -32,3 +32,6 @@ After the hiding process, you can decrypt the encrypted file.
 
 <p align="center"><img src="https://github.com/RadoslawJasinski/ImageSteganography-MVVM/blob/main/Comparison.png"></p>
 <p align="center">Comparison of selected bit, data is vertically hidden</p>&nbsp;
+
+If my project was helpful, you can buy me a coffee ☕️</br>
+https://www.buymeacoffee.com/radoslawj

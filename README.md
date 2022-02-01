@@ -5,14 +5,14 @@
 * [User interface](#user-interface)
 
 ## General info
-This application was created to hide files on bitmaps. 
+This application was created to hide files in bitmaps. 
 You can choose the bit number for RGB. A hidden file is stored on last data storage bits(BMP).
 After the hiding process, you can decrypt the encrypted file.
 
 
 ## Functions
 
-+ Hiding a file on bitmap
++ Hiding a file in bitmap
 + Information about data storage
 + Bit selection for each subpixel(RGB) 
 + Preview of hidden file
